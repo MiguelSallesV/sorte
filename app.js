@@ -2,6 +2,7 @@ let quantidade;
 let maximo;
 let minimo;
 let listaDeNumerosSorteados = [];
+let numeroSorteado;
 
 function mostrarNumerosSorteados (mensagem) {
     let texto = document.getElementById('resultado').querySelector('label');
@@ -14,10 +15,13 @@ function valoresDigitados () {
     maximo = parseInt(document.getElementById('ate').value);
 }
 
+function sorteadorDeNumero (de, ate) {
+   return parseInt(Math.random () * (ate - de + 1) + de); 
+}
+
 function mudarBotaoReiniciar(antigo, novo) {
     let botaoreiniciar = document.getElementById('btn-reiniciar');
     botaoreiniciar.classList.replace (antigo, novo);
-    document.getElementById('btn-reiniciar').removeAttribute('disabled');
 }
 
 mostrarNumerosSorteados('Números Sorteados: Nenhum no momento')
@@ -25,17 +29,19 @@ document.getElementById('btn-reiniciar').setAttribute('disabled', true)
 
 function sortear() {
     valoresDigitados ()
-    while (listaDeNumerosSorteados.length != quantidade) {
-        let numeroSorteado = parseInt(Math.random () * (maximo - minimo) + minimo);
 
+    while (listaDeNumerosSorteados.length != quantidade) {
+          numeroSorteado = sorteadorDeNumero(minimo,maximo);
         if (listaDeNumerosSorteados.includes(numeroSorteado)) {
-                return sortear();
+             numeroSorteado = sorteadorDeNumero(minimo,maximo);
         } else {
-                listaDeNumerosSorteados.push(numeroSorteado);        
+             listaDeNumerosSorteados.push(numeroSorteado);        
         }
     }
+
    mostrarNumerosSorteados ('Números Sorteados: ' + listaDeNumerosSorteados);
    mudarBotaoReiniciar("container__botao-desabilitado", 'container__botao'); 
+   document.getElementById('btn-reiniciar').removeAttribute('disabled');
 }
 
 function reiniciarValores () {
@@ -52,4 +58,5 @@ function reiniciar() {
     mostrarNumerosSorteados ('Números Sorteados: Nenhum no momento');
     listaDeNumerosSorteados = [];
     document.getElementById('btn-reiniciar').setAttribute('disabled', true);
+    mudarBotaoReiniciar ('container__botao', "container__botao-desabilitado")
 }
