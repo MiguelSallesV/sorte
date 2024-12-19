@@ -14,10 +14,6 @@ function valoresDigitados () {
     maximo = parseInt(document.getElementById('ate').value);
 }
 
-function sortearNumero () {
-    return parseInt(Math.random () * (maximo - minimo) + minimo);
-}
-
 function mudarBotaoReiniciar(antigo, novo) {
     let botaoreiniciar = document.getElementById('btn-reiniciar');
     botaoreiniciar.classList.replace (antigo, novo);
