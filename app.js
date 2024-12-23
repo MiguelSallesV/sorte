@@ -38,11 +38,17 @@ function sortear() {
 
     while (listaDeNumerosSorteados.length != quantidade) {
           numeroSorteado = sorteadorDeNumero(minimo,maximo);
+        if (quantidade <= (maximo - minimo + 1)) {
         if (listaDeNumerosSorteados.includes(numeroSorteado)) {
              numeroSorteado = sorteadorDeNumero(minimo,maximo);
         } else {
              listaDeNumerosSorteados.push(numeroSorteado);        
         }
+    } else {
+            mostrarNumerosSorteados ('Certifique-se de que a quantidade de números esteja dentro dos parâmetros');
+            reiniciarValores()
+            return;
+    }
     }
 
    mostrarNumerosSorteados ('Números Sorteados: ' + listaDeNumerosSorteados);
