@@ -31,8 +31,9 @@ function sortear() {
     valoresDigitados ()
 
     if (minimo > maximo) {
-        mostrarNumerosSorteados('Certifique-se de que o valor no campo (Do Número) é menor que o do (Até)')
-        reiniciarValores()
+        mostrarNumerosSorteados('Certifique-se de que o valor no campo "Do Número" é menor que o do "Até"');
+        reiniciarValores();
+        return;
     }
 
     while (listaDeNumerosSorteados.length != quantidade) {
