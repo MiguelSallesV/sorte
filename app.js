@@ -30,6 +30,11 @@ document.getElementById('btn-reiniciar').setAttribute('disabled', true)
 function sortear() {
     valoresDigitados ()
 
+    if (minimo > maximo) {
+        mostrarNumerosSorteados('Certifique-se de que o valor no campo (Do Número) é menor que o do (Até)')
+        reiniciarValores()
+    }
+
     while (listaDeNumerosSorteados.length != quantidade) {
           numeroSorteado = sorteadorDeNumero(minimo,maximo);
         if (listaDeNumerosSorteados.includes(numeroSorteado)) {
